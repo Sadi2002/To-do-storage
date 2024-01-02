@@ -1,10 +1,17 @@
 <template>
   <div class="clear-completed">
-    <button>Wyczyść zrobione</button>
-    <button>Wyczyść wszystko</button>
+    <button @click="store.clearChecked">Wyczyść zrobione</button>
+    <button @click="store.clearAll">Wyczyść wszystko</button>
   </div>
 </template>
 
 <script>
-export default {};
+import { todos } from "../store/store";
+export default {
+  setup() {
+    const store = todos();
+
+    return { store };
+  },
+};
 </script>

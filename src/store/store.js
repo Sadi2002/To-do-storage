@@ -9,12 +9,27 @@ export const todos = defineStore("store", {
   actions: {
     addTask() {
       if (this.search !== "") {
-        this.allTasks.push({ title: this.search, isCompleted: false });
+        const lowerCaseSearch = this.search.toLowerCase();
+        const upperFirstLetter = lowerCaseSearch.charAt(0).toUpperCase();
+
+        this.allTasks.push({
+          title: upperFirstLetter + lowerCaseSearch.slice(1),
+          isCompleted: false,
+        });
+
         this.search = "";
       }
     },
     completed(task) {
       task.isCompleted = !task.isCompleted;
+    },
+    clearChecked() {
+      this.allTasks = this.allTasks.filter((task) => {
+        return !task.isCompleted;
+      });
+    },
+    clearAll() {
+      this.allTasks = [];
     },
   },
 });
