@@ -5,7 +5,7 @@
       v-model="store.search"
       placeholder="Wpisz zadanie do zrobienia..."
     />
-    <i @click="store.addTask" class="fas fa-plu"></i>
+    <i @click="store.addTask" class="fas fa-plus"></i>
   </div>
 </template>
 
